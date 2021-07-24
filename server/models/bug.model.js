@@ -22,7 +22,7 @@ const BugSchema = new mongoose.Schema({
     },
 
     userId: {
-        type: number,
+        type: String,
         required: [true, "userId is required"]
     }
 
@@ -36,9 +36,10 @@ const BugSchema = new mongoose.Schema({
 
 
 BugSchema.pre('validate', function (next) {
-    if (this.password !== this.confirmPassword) {
-        this.invalidate('confirmPassword', 'Password must match confirm password');
+    if (this.priority === "") {
+        this.invalidate('priority', 'You must select a priority');
     }
     next();
 });
 
+module.exports = mongoose.model("Bug", BugSchema);

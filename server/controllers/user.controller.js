@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Bug = require("../models/bug.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { secret } = require("../config/jwt");
@@ -11,6 +12,26 @@ class UserController {
             .then(() => {
                 res.cookie("usertoken", jwt.sign({ _id: user.id }, secret), { httpOnly: true })
                     .json({ msg: "succ created user", user: user })
+            })
+            .catch(err => res.json(err))
+    }
+
+    addBug(req, res) {
+        const bug = new Bug(req.body)
+        bug.save()
+            .then(() => {
+                res.json({ msg: "succ created bug", bug: bug })
+            })
+            .catch(err => res.json(err))
+    }
+
+    updateBug(req, res) {
+        Bug.findOneAndUpdate(
+            { _id: req.params.id },
+            req.body,
+        )
+            .then(() => {
+                res.json({ msg: "updated", bug: bug })
             })
             .catch(err => res.json(err))
     }
@@ -42,6 +63,13 @@ class UserController {
         const decoded = jwt.decode(req.cookies.usertoken, { complete: true });
         User.findById(decoded.payload._id)
             .then(user => res.json(user))
+            .catch(err => res.json(err))
+    }
+
+    getUsersBugs(req, res) {
+        const decoded = jwt.decode(req.cookies.usertoken, { complete: true });
+        Bug.find({ userId: decoded.payload._id })
+            .then(bugs => res.json(bugs))
             .catch(err => res.json(err))
     }
 

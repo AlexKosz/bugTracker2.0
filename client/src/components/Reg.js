@@ -41,7 +41,7 @@ const Reg = () => {
 
     return (
         <div>
-            <h1>Register</h1>
+            <h1>Register Here</h1>
             <form onSubmit={register}>
                 <div className="form-group">
                     <label>First Name</label>

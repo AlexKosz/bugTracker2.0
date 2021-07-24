@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  padding: 15px;
+  
 }
 
 .App-logo {
@@ -35,4 +37,85 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+  background-color: #BBB;
+}
+
+.newBugCard{
+  background-color: #FFF;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.userInfo{
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.high{
+  background-color: #DC0000;
+}
+
+.medium{
+  background-color: #DF7300;
+}
+
+.low{
+  background-color: #D3D300;
+}
+
+.solved{
+  background-color: #009000;
+}
+
+.box{
+  background-color: #FFF;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+
+
+.solvedAn{
+  animation-name: solvedAn;
+  animation-duration: 2s;
+}
+
+
+
+
+
+@keyframes solvedAn {
+  0% {
+    position: relative;
+    left: 0px;
+    background-color: #009000;
+
+  }
+  100% {
+    position: relative;
+    left: 2000px;
+  }
+}
+
+.inactive{
+  color:#AAA
+}
+
+.active{
+  color:#000
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
