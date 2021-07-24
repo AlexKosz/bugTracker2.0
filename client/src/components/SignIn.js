@@ -28,10 +28,6 @@ const SignIn = () => {
                     : <Reg />
             }
 
-            {/* <div className="col">
-                <Reg />
-                <Login />
-            </div> */}
 
         </div>
     )
