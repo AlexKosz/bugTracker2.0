@@ -26,6 +26,6 @@ require('./server/routes/routes')(app);
 
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("Listening at Port", port)
 })
