@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "./config.env" })
 const express = require('express');
 const cors = require('cors');
 const cookies = require("cookie-parser");
@@ -32,6 +33,6 @@ app.get('*', (req, res) => {
 });
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("Listening at Port", port)
 })
