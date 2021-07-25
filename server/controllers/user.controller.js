@@ -36,7 +36,7 @@ class UserController {
             .catch(err => res.json(err))
     }
 
-    login(req, res) {
+    connectin(req, res) {
         User.findOne({ email: req.body.email })
             .then(user => {
                 if (user === null) {
