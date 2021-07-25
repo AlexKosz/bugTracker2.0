@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
+
+const url = "https://pacific-everglades-12315.herokuapp.com"
+
 const NewBug = (props) => {
     const [formInfo, setFormInfo] = useState({
         project: "",
@@ -31,7 +34,7 @@ const NewBug = (props) => {
         e.preventDefault();
         const newBug = formInfo;
         newBug.userId = props.userId;
-        axios.post('http://localhost:8000/api/bugs/add', formInfo, { withCredentials: true })
+        axios.post(`${url}/api/bugs/add`, formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 if (res.data.errors) {

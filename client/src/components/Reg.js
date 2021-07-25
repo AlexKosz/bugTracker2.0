@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
+const url = "https://pacific-everglades-12315.herokuapp.com/api/register"
+//'http://localhost:8000/api/register' 30
+
 const Reg = () => {
     const [formInfo, setFormInfo] = useState({
         firstName: "",
@@ -24,7 +27,7 @@ const Reg = () => {
 
     const register = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/register', formInfo, { withCredentials: true })
+        axios.post(url, formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 if (res.data.errors) {

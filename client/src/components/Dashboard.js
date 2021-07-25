@@ -5,6 +5,9 @@ import NewBug from "./NewBug"
 import BugCard from "./BugCard"
 import SolvedBugCard from "./SolvedBugCard"
 
+const url = "https://pacific-everglades-12315.herokuapp.com"
+
+
 const Dashboard = () => {
     const [userInfo, setUserInfo] = useState(null)
     const [bugs, setBugs] = useState(null)
@@ -14,7 +17,7 @@ const Dashboard = () => {
 
     //get logged in user info
     useEffect(() => {
-        axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
+        axios.get(`${url}/api/users/loggedin`, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 setUserInfo(res.data)
@@ -31,7 +34,7 @@ const Dashboard = () => {
 
     //get bugs
     useEffect(() => {
-        axios.get("http://localhost:8000/api/bugs/get", { withCredentials: true })
+        axios.get(`${url}/api/bugs/get`, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 const high = [], medium = [], low = [], solved = [];
@@ -65,7 +68,7 @@ const Dashboard = () => {
 
 
     const logout = (e) => {
-        axios.get("http://localhost:8000/api/users/logout", { withCredentials: true })
+        axios.get(`${url}/api/users/logout`, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 navigate("/")

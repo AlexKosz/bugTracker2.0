@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
+const url = "https://pacific-everglades-12315.herokuapp.com/api/login"
+//'http://localhost:8000/api/login' 27
+
+
 const Login = () => {
     const [formInfo, setFormInfo] = useState({
         email: "",
@@ -20,7 +24,7 @@ const Login = () => {
 
     const login = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/login', formInfo, { withCredentials: true })
+        axios.post(url, formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 if (res.data.msg === "succ") {

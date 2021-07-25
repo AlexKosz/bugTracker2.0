@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
+const url = "https://pacific-everglades-12315.herokuapp.com"
+
 const BugCard = (props) => {
     const [errors, setErrors] = useState(false)
     const [solving, setSolving] = useState(false)
@@ -44,7 +46,7 @@ const BugCard = (props) => {
         bug.solution = solution.solution;
         bug.priority = "Solved";
         console.log(bug)
-        axios.put(`http://localhost:8000/api/bugs/update/${props.bug._id}`, bug, { withCredentials: true })
+        axios.put(`${url}/api/bugs/update/${props.bug._id}`, bug, { withCredentials: true })
             .then(res => {
                 console.log(res)
                 props.setLoaded(false)
