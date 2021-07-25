@@ -24,7 +24,10 @@ require('./server/config/mongoose');
 
 require('./server/routes/routes')(app);
 
-
+app.get('*', (req, res) => {
+    const index = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(index);
+});
 
 app.listen(process.env.PORT || port, () => {
     console.log("Listening at Port", port)
