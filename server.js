@@ -11,7 +11,7 @@ const app = express();
 
 
 app.use(cors({
-    credentials: true, origin: 'pacific-everglades-12315.herokuapp.com/'
+    credentials: true, origin: 'https://pacific-everglades-12315.herokuapp.com/'
 }));
 
 
