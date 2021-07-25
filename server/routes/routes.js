@@ -2,8 +2,8 @@ const Users = require("../controllers/user.controller")
 const { authen } = require("../config/jwt");
 
 module.exports = app => {
-    app.post("/api/register", Users.register)
-    app.post("/api/login", Users.login)
+    app.post("/api/users/register", Users.register)
+    app.post("/api/users/login", Users.login)
     app.get("/api/users/loggedin", authen, Users.getLoggedInUser)
     app.get("/api/users/logout", Users.logout)
     app.get("/api/bugs/currentUser", Users.getUsersBugs)

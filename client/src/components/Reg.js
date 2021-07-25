@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
-const url = "https://pacific-everglades-12315.herokuapp.com/api/register"
+const url = "https://pacific-everglades-12315.herokuapp.com/api/users/register"
 //'http://localhost:8000/api/register' 30
 
 const Reg = () => {
