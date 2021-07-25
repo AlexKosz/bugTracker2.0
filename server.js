@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookies = require("cookie-parser");
+const path = require('path')
 
 
 
@@ -24,6 +25,11 @@ require('./server/config/mongoose');
 
 require('./server/routes/routes')(app);
 
+app.use(express.static('client/build'))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+});
 
 
 app.listen(port, () => {
