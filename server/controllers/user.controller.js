@@ -36,6 +36,17 @@ class UserController {
             .catch(err => res.json(err))
     }
 
+    register(req, res) {
+        const user = new User(req.body)
+        user.save()
+            .then(() => {
+                res.cookie("usertoken", jwt.sign({ _id: user.id }, secret), { httpOnly: true })
+                    .json({ msg: "succ created user", user: user })
+            })
+            .catch(err => res.json(err))
+    }
+
+
     connectin(req, res) {
         User.findOne({ email: req.body.email })
             .then(user => {
