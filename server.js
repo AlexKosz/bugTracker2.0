@@ -4,7 +4,7 @@ const cookies = require("cookie-parser");
 const port = 8000;
 const app = express();
 app.use(cors({
-    credentials: true, origin: 'https://pacific-everglades-12315.herokuapp'
+    credentials: true, origin: 'https://pacific-everglades-12315.herokuapp.com'
 }));
 
 
