@@ -1,25 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const cookies = require("cookie-parser");
-
-
-
 const port = 8000;
-
-
 const app = express();
-
-
 app.use(cors({
-    credentials: true, origin: 'https://pacific-everglades-12315.herokuapp.com'
+    credentials: true, origin: 'https://pacific-everglades-12315.herokuapp'
 }));
 
 
 app.use(express.json());
 app.use(cookies());
-
-
-
 require('./server/config/mongoose');
 
 require('./server/routes/routes')(app);
@@ -32,10 +22,6 @@ app.use(express.static(root));
 app.get("*", (req, res) => {
     res.sendFile('index.html', { root });
 })
-
-
-
-
 
 app.listen(process.env.PORT || port, () => {
     console.log("Listening at Port", port)
